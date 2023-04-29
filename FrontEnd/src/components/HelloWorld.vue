@@ -1,19 +1,19 @@
-
-
 <template>
-
   <div class="container">
     <div class="header">
-      <h1>My Personal Projects</h1>
+      <h1>Social Media</h1>
     </div>
     <div class="content">
-      <div v-for="project in projects" :key="project.id" class="project-card">
+      <div v-for="project in projects" :key="project.id" class="project-card" @mouseover="hover = project.id" @mouseleave="hover = null">
         <img :src="project.image" alt="Project Image">
         <h2>{{ project.title }}</h2>
         <p>{{ project.description }}</p>
         <div class="links">
           <a :href="project.liveLink" target="_blank">Live Demo</a>
           <a :href="project.codeLink" target="_blank">Source Code</a>
+        </div>
+        <div class="hover-info" v-if="hover === project.id">
+          <span>{{ project.hoverInfo }}</span>
         </div>
       </div>
     </div>
@@ -27,11 +27,12 @@ export default {
       projects: [
         {
           id: 1,
-          title: "My First Project",
-          image: "https://placehold.it/300x200",
-          description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+          title: "BlockChain",
+          image: "https://public.bnbstatic.com/static/academy/uploads-original/0ee9d7d59d424a7c8bd7d70c86070beb.png",
+          description: "HAHAHHA dogecoin to the moon",
           liveLink: "https://example.com",
-          codeLink: "https://github.com/example/my-first-project"
+          codeLink: "https://github.com/example/my-first-project",
+          hoverInfo: "Lorem ipsum dolor sit amet"
         },
         {
           id: 2,
@@ -39,9 +40,11 @@ export default {
           image: "https://placehold.it/300x200",
           description: "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
           liveLink: "https://example.com",
-          codeLink: "https://github.com/example/my-second-project"
+          codeLink: "https://github.com/example/my-second-project",
+          hoverInfo: "Sed do eiusmod tempor"
         }
-      ]
+      ],
+      hover: null
     };
   }
 };
@@ -56,18 +59,19 @@ export default {
 
 .header {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 80px;
   color: green;
 }
 
 .project-card {
-  margin-bottom: 20px;
+  margin-bottom: 20px; /* changed from 20px */
+  position: relative;
 }
 
 .project-card img {
   width: 100%;
   height: auto;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .project-card h2 {
@@ -83,6 +87,7 @@ export default {
   display: inline-block;
   margin-right: 10px;
 }
+
 
 
 
