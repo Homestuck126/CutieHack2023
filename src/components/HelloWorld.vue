@@ -182,6 +182,23 @@ ul {
   left: 0;
   
 }
+.form-container {
+  position: fixed;
+  top: 0;
+  right: 0%;
+  width: 30%;
+  height: 10%;
+  background-color: black;
+  border: 1px solid black;
+  padding: 1px;
+}
+label {
+  font-size: 15px
+
+}
+
+input {
+padding: 2px;
 
 }
 textarea{
