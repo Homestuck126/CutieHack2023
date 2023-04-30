@@ -1,6 +1,6 @@
 <script setup>
 import WelcomeItem from './WelcomeItem.vue'
-import SlideTab from './SlideTab.vue'
+
 </script>
 
 <template>
