@@ -40,6 +40,12 @@
   </div>
   </div>
 </template>
+import { Client, Databases, ID } from "appwrite";	
+	const client = new Client();
+	client.setEndpoint('http://127.0.0.1/v1')
+	client.setProject('644db0bebd03c9964158');
+	
+	const databases = new Databases(client);
 
 <script>
 export default {
@@ -62,7 +68,7 @@ export default {
         },
         {
           title: "PROJECTGRAM",
-          description: "A place where youc an create your own porfilio to share with recruiter or just your friends",
+          description: "A place where youc an create your own porfilio to share with recruiter or just your",
 
           codeLink: "https://github.com"
         }
