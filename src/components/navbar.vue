@@ -22,10 +22,11 @@ import WelcomeItem from './WelcomeItem.vue'
 }
 
 .navbar {
+
   position: fixed;
   top: 0;
   left: 0;
-
+font-size: 20px;
   color: #fff;
   padding: 20px;
 }

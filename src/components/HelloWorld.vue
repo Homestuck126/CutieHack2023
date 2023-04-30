@@ -1,7 +1,12 @@
-<template>
-  <div class="container">
-    <h1 class="header">Social Media</h1>
 
+
+
+
+<template>
+
+    <h1 class="header">TINDER 2.0</h1>
+    
+  <div class="container">
     <div class="projects">
       <div class="project-card" v-for="(project, index) in projects" :key="index">
         <img :src="'https://picsum.photos/seed/' + index + '/200'" alt="">
@@ -11,9 +16,7 @@
           <a :href="project.liveLink" target="_blank">Live</a>
           <a :href="project.codeLink" target="_blank">Code</a>
         </div>
-        <div class="hover-info">
-          <p>Hover over card for more info</p>
-        </div>
+        
       </div>
     </div>
 
@@ -40,6 +43,7 @@
 
 <script>
 export default {
+ 
   data() {
     return {
       projects: [
@@ -91,20 +95,30 @@ export default {
   max-width: 960px;
   margin: 0 auto;
   padding: 20px;
+
 }
 
 .header {
   text-align: center;
-  margin-bottom: 80px;
+  margin-bottom: 90px;
   color: green;
+  font-size: 70px;
 }
 .projects{
-  margin-top: 70px; 
+ display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; /* add space between the columns */
+  margin-top: 100px; 
+  width: 200%;
 }
 .project-card {
-  margin-bottom: 20px; /* changed from 20px */
+  width: calc(33.33% - 15px); /* adjust the width to fit three cards per row */
+  margin-bottom: 20px;
+  border: 4px solid orange;
+  border-radius: 15px;
+  padding: 7px;
   position: relative;
-
+  
 }
 
 .project-card img {
@@ -127,11 +141,24 @@ export default {
   margin-right: 10px;
 }
 
+button {
 
+  background-color: #ADD8E6;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #87CEFA;
+}
 
 
 h1 {
-  font-weight: 500;
+  font-weight: 600;
   font-size: 2.6rem;
   position: fixed;
   top: 0;
@@ -144,7 +171,7 @@ h1::before {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 90%;
   background-color: #ADD8E6;
   z-index: -1;
 }
@@ -156,60 +183,9 @@ ul {
   
 }
 
-.greetings h1,
-.greetings ul {
-  text-align: center;
 }
-
-@media (min-width: 1024px) {
-  .greetings h1,
-  .greetings h3 {
-   
-  }
+textarea{
+  padding: 1px;
 }
-
-
-
-
-
-
-h1 {
-  font-weight: 500;
-  font-size: 2.6rem;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-}
-h1::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #ADD8E6;
-  z-index: -1;
-}
-ul {
-  font-size: 1.2rem;
-  position: fixed;
-  top: 0;
-  left: 0;
-  
-}
-
-.greetings h1,
-.greetings ul {
-  text-align: center;
-}
-
-@media (min-width: 1024px) {
-  .greetings h1,
-  .greetings h3 {
-   
-  }
-}
-
-
 </style>
+
