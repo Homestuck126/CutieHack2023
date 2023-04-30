@@ -1,7 +1,7 @@
 <script setup>
 import HelloWorld from './components/HelloWorld.vue'
 import TheWelcome from './components/navbar.vue'
-import post from './components/post.vue'
+
 </script>
 
 <template>
