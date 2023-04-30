@@ -5,7 +5,9 @@ import WelcomeItem from './WelcomeItem.vue'
 
 <template>
   <div>
+
     <h3 class="header">PROJECTGRAM</h3>
+    <h4 class="welp">copyright@</h4>
     <div class="container">
       <nav class="navbar">
         <div class="dropdown">
@@ -45,6 +47,13 @@ export default {
   margin: 0 auto;
   padding: 15x;
   
+}
+.welp{
+  position: absolute;
+bottom:100%;
+  right: 202%;
+font-weight: bold;
+  color: #42b883;
 }
 h3 {
   font-weight: 600;

@@ -1,5 +1,6 @@
 <template>
   <div class="app">
+  
   <h1 class="header"></h1>
   
 
@@ -136,6 +137,7 @@ font-weight: bold;
   position: relative;
   
 }
+
 
 .project-card img {
   width: 100%;
