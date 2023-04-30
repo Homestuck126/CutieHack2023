@@ -40,12 +40,6 @@
   </div>
   </div>
 </template>
-import { Client, Databases, ID } from "appwrite";	
-	const client = new Client();
-	client.setEndpoint('http://127.0.0.1/v1')
-	client.setProject('644db0bebd03c9964158');
-	
-	const databases = new Databases(client);
 
 <script>
 export default {
