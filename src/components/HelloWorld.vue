@@ -1,21 +1,39 @@
 <template>
   <div class="container">
-    <div class="header">
-      <h1>Social Media</h1>
-    </div>
-    <div class="content">
-      <div v-for="project in projects" :key="project.id" class="project-card" @mouseover="hover = project.id" @mouseleave="hover = null">
-        <img :src="project.image" alt="Project Image">
+    <h1 class="header">Social Media</h1>
+
+    <div class="projects">
+      <div class="project-card" v-for="(project, index) in projects" :key="index">
+        <img :src="'https://picsum.photos/seed/' + index + '/200'" alt="">
         <h2>{{ project.title }}</h2>
         <p>{{ project.description }}</p>
         <div class="links">
-          <a :href="project.liveLink" target="_blank">Live Demo</a>
-          <a :href="project.codeLink" target="_blank">Source Code</a>
+          <a :href="project.liveLink" target="_blank">Live</a>
+          <a :href="project.codeLink" target="_blank">Code</a>
         </div>
-        <div class="hover-info" v-if="hover === project.id">
-          <span>{{ project.hoverInfo }}</span>
+        <div class="hover-info">
+          <p>Hover over card for more info</p>
         </div>
       </div>
+    </div>
+
+    <div class="form-container">
+      <h2>Add a New Project</h2>
+      <form>
+        <label for="title">Title</label>
+        <input type="text" id="title" v-model="newProject.title">
+
+        <label for="description">Description</label>
+        <textarea id="description" v-model="newProject.description"></textarea>
+
+        <label for="live-link">Live Link</label>
+        <input type="text" id="live-link" v-model="newProject.liveLink">
+
+        <label for="code-link">Code Link</label>
+        <input type="text" id="code-link" v-model="newProject.codeLink">
+
+        <button type="button" @click="addProject()">Submit</button>
+      </form>
     </div>
   </div>
 </template>
@@ -26,32 +44,50 @@ export default {
     return {
       projects: [
         {
-          id: 1,
-          title: "BlockChain",
-          image: "https://public.bnbstatic.com/static/academy/uploads-original/0ee9d7d59d424a7c8bd7d70c86070beb.png",
-          description: "HAHAHHA dogecoin to the moon",
+          title: "My Project 1",
+          description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
           liveLink: "https://example.com",
-          codeLink: "https://github.com/example/my-first-project",
-          hoverInfo: "Lorem ipsum dolor sit amet"
+          codeLink: "https://github.com"
         },
         {
-          id: 2,
-          title: "My Second Project",
-          image: "https://placehold.it/300x200",
-          description: "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+          title: "My Project 2",
+          description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
           liveLink: "https://example.com",
-          codeLink: "https://github.com/example/my-second-project",
-          hoverInfo: "Sed do eiusmod tempor"
+          codeLink: "https://github.com"
+        },
+        {
+          title: "My Project 3",
+          description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+          liveLink: "https://example.com",
+          codeLink: "https://github.com"
         }
       ],
-      hover: null
-    };
+      newProject: {
+        title: "",
+        description: "",
+        liveLink: "",
+        codeLink: ""
+      }
+    }
+  },
+  methods: {
+    addProject() {
+      this.projects.push(this.newProject);
+      this.newProject = {
+        title: "",
+        description: "",
+        liveLink: "",
+        codeLink: ""
+      };
+    }
   }
 };
+
 </script>
 
 <style>
 .container {
+
   max-width: 960px;
   margin: 0 auto;
   padding: 20px;
@@ -62,10 +98,13 @@ export default {
   margin-bottom: 80px;
   color: green;
 }
-
+.projects{
+  margin-top: 70px; 
+}
 .project-card {
   margin-bottom: 20px; /* changed from 20px */
   position: relative;
+
 }
 
 .project-card img {
@@ -87,6 +126,49 @@ export default {
   display: inline-block;
   margin-right: 10px;
 }
+
+
+
+
+h1 {
+  font-weight: 500;
+  font-size: 2.6rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+h1::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ADD8E6;
+  z-index: -1;
+}
+ul {
+  font-size: 1.2rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  
+}
+
+.greetings h1,
+.greetings ul {
+  text-align: center;
+}
+
+@media (min-width: 1024px) {
+  .greetings h1,
+  .greetings h3 {
+   
+  }
+}
+
+
 
 
 

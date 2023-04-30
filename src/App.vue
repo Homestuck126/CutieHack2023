@@ -1,6 +1,7 @@
 <script setup>
 import HelloWorld from './components/HelloWorld.vue'
 import TheWelcome from './components/navbar.vue'
+import post from './components/post.vue'
 </script>
 
 <template>
@@ -35,6 +36,7 @@ header {
     display: flex;
     place-items: flex-start;
     flex-wrap: wrap;
+    
   }
 }
 </style>
