@@ -1,12 +1,7 @@
-
-
-
-
 <template>
-
-    <h1 class="header">TINDER 2.0</h1>
-    
   <div class="container">
+    <h1 class="header">Social Media</h1>
+
     <div class="projects">
       <div class="project-card" v-for="(project, index) in projects" :key="index">
         <img :src="'https://picsum.photos/seed/' + index + '/200'" alt="">
@@ -16,7 +11,9 @@
           <a :href="project.liveLink" target="_blank">Live</a>
           <a :href="project.codeLink" target="_blank">Code</a>
         </div>
-        
+        <div class="hover-info">
+          <p>Hover over card for more info</p>
+        </div>
       </div>
     </div>
 
@@ -42,8 +39,16 @@
 </template>
 
 <script>
+
+import { Client, Databases, ID } from "appwrite";
+const client = new Client();
+    client.setEndpoint('http://127.0.0.1/v1')
+    client.setProject('644db0bebd03c9964158');
+
+const databases = new Databases(client);
+
+
 export default {
- 
   data() {
     return {
       projects: [
@@ -53,18 +58,6 @@ export default {
           liveLink: "https://example.com",
           codeLink: "https://github.com"
         },
-        {
-          title: "My Project 2",
-          description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-          liveLink: "https://example.com",
-          codeLink: "https://github.com"
-        },
-        {
-          title: "My Project 3",
-          description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-          liveLink: "https://example.com",
-          codeLink: "https://github.com"
-        }
       ],
       newProject: {
         title: "",
@@ -73,9 +66,22 @@ export default {
         codeLink: ""
       }
     }
+
   },
   methods: {
     addProject() {
+    const promise = databases.createDocument(
+    '644db67fe5159ca07521',
+    '644db9ec37abb6eff869',
+    ID.unique(),
+this.newProject
+);
+console.log ( "HELP ME");
+promise.then(function (response) {
+    console.log(response);
+}, function (error) {
+    console.log(error);
+});
       this.projects.push(this.newProject);
       this.newProject = {
         title: "",
@@ -95,30 +101,20 @@ export default {
   max-width: 960px;
   margin: 0 auto;
   padding: 20px;
-
 }
 
 .header {
   text-align: center;
-  margin-bottom: 90px;
+  margin-bottom: 80px;
   color: green;
-  font-size: 70px;
 }
 .projects{
- display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between; /* add space between the columns */
-  margin-top: 100px; 
-  width: 200%;
+  margin-top: 70px; 
 }
 .project-card {
-  width: calc(33.33% - 15px); /* adjust the width to fit three cards per row */
-  margin-bottom: 20px;
-  border: 4px solid orange;
-  border-radius: 15px;
-  padding: 7px;
+  margin-bottom: 20px; /* changed from 20px */
   position: relative;
-  
+
 }
 
 .project-card img {
@@ -141,24 +137,11 @@ export default {
   margin-right: 10px;
 }
 
-button {
 
-  background-color: #ADD8E6;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-button:hover {
-  background-color: #87CEFA;
-}
 
 
 h1 {
-  font-weight: 600;
+  font-weight: 500;
   font-size: 2.6rem;
   position: fixed;
   top: 0;
@@ -171,7 +154,7 @@ h1::before {
   top: 0;
   left: 0;
   width: 100%;
-  height: 90%;
+  height: 100%;
   background-color: #ADD8E6;
   z-index: -1;
 }
@@ -200,9 +183,60 @@ label {
 input {
 padding: 2px;
 
+.greetings h1,
+.greetings ul {
+  text-align: center;
 }
-textarea{
-  padding: 1px;
-}
-</style>
 
+@media (min-width: 1024px) {
+  .greetings h1,
+  .greetings h3 {
+   
+  }
+}
+
+
+
+
+
+
+h1 {
+  font-weight: 500;
+  font-size: 2.6rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+h1::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ADD8E6;
+  z-index: -1;
+}
+ul {
+  font-size: 1.2rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  
+}
+
+.greetings h1,
+.greetings ul {
+  text-align: center;
+}
+
+@media (min-width: 1024px) {
+  .greetings h1,
+  .greetings h3 {
+   
+  }
+}
+
+
+</style>
